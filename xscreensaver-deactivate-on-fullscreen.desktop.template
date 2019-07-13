@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=Screensaver
+Type=Application
+Exec=%DIR%/xscreensaver-deactivate-on-fullscreen.sh
