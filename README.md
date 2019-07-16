@@ -14,7 +14,7 @@
     cd
     git clone https://github.com/zarino/pop-os-tweaks.git
     cd pop-os-tweaks
-    ./setup.sh
+    sudo ./setup.sh
 
 The script automatically reloads the gnome-shell, so you don’t need to do `Alt`-`F2` and `r`.
 
