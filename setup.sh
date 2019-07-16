@@ -27,6 +27,13 @@ mkdir -p "${HOME_DIR}/.config/autostart"
 rm -f "${HOME_DIR}/.config/autostart/xscreensaver-deactivate-on-fullscreen.desktop"
 sed -e "s;%DIR%;$SCRIPT_DIR;g" "xscreensaver-deactivate-on-fullscreen.desktop.template" > "${HOME_DIR}/.config/autostart/xscreensaver-deactivate-on-fullscreen.desktop"
 
+# Version-controlled xscreensaver config!
+if [ -e "${HOME_DIR}/.xscreensaver" ]
+    mv "${HOME_DIR}/.xscreensaver" "${HOME_DIR}/.xscreensaver.backup"
+    echo "Existing ~/.xscreensaver config moved to ~/.xscreensaver.backup"
+fi
+cp "${SCRIPT_DIR}/xscreensaver-config" "${HOME_DIR}/.xscreensaver"
+
 # Restart gnome-shell so that the new extensions are used.
 # The command line equivalent of pressing `ALT`+`f2` and typing `r`.
 killall -3 gnome-shell
