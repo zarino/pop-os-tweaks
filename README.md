@@ -14,8 +14,10 @@
     cd
     git clone https://github.com/zarino/pop-os-tweaks.git
     cd pop-os-tweaks
-    sudo ./setup.sh
+    ./setup.sh
 
-The script automatically reloads the gnome-shell, so you don’t need to do `Alt`-`F2` and `r`.
+The script will ask for a root password so it can install packages.
+
+It automatically reloads the gnome-shell, so you don’t need to do `Alt`-`F2` and `r`.
 
 The files it copies into `~/.config/autostart` will take effect on the next login/restart.
