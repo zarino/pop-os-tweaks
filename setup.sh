@@ -30,20 +30,17 @@ done
 
 # Create a .desktop file to load xscreensaver in the background on startup.
 mkdir -p "${HOME_DIR}/.config/autostart"
-rm -rf "${HOME_DIR}/.config/autostart/xscreensaver.desktop"
-ln -s "${SCRIPT_DIR}/xscreensaver.desktop" "${HOME_DIR}/.config/autostart/xscreensaver.desktop"
+cp "${SCRIPT_DIR}/xscreensaver.desktop" "${HOME_DIR}/.config/autostart/xscreensaver.desktop"
 
 # Create a .desktop file to run the fullscreen watcher in the background.
 mkdir -p "${HOME_DIR}/.config/autostart"
-rm -f "${HOME_DIR}/.config/autostart/xscreensaver-deactivate-on-fullscreen.desktop"
-sed -e "s;%DIR%;$SCRIPT_DIR;g" "xscreensaver-deactivate-on-fullscreen.desktop.template" > "${HOME_DIR}/.config/autostart/xscreensaver-deactivate-on-fullscreen.desktop"
+sed -e "s;%DIR%;${SCRIPT_DIR};g" "xscreensaver-deactivate-on-fullscreen.desktop.template" > "${HOME_DIR}/.config/autostart/xscreensaver-deactivate-on-fullscreen.desktop"
 
-# Version-controlled xscreensaver config!
-if [ -e "${HOME_DIR}/.xscreensaver" ]
-    mv "${HOME_DIR}/.xscreensaver" "${HOME_DIR}/.xscreensaver.backup"
-    echo "Existing ~/.xscreensaver config moved to ~/.xscreensaver.backup"
-fi
-cp "${SCRIPT_DIR}/xscreensaver-config" "${HOME_DIR}/.xscreensaver"
+# Main xscreensaver config.
+sed -e "s;%HOME_DIR%;${HOME_DIR};g" "xscreensaver-config.template" > "${HOME_DIR}/.xscreensaver"
+
+# Create a directory for xscreensaver to find images in.
+mkdir -p "${HOME_DIR}/Pictures/Backgrounds"
 
 # Set "gnome tweaks"
 cat "${SCRIPT_DIR}/gsettings.txt" | while read -r line
