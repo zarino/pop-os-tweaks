@@ -53,6 +53,7 @@ do
     gsettings $line
 done
 
-# Restart gnome-shell so that the new extensions are used.
-# The command line equivalent of pressing `ALT`+`f2` and typing `r`.
-killall -3 gnome-shell
+# Restart gnome-shell (equivalent of `ALT`+`f2` and `r`).
+# Run as root to avoid "Operation not permitted" warning output.
+# Will prompt for password.
+sudo killall -3 gnome-shell
