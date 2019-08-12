@@ -30,3 +30,18 @@ Desktop background and lock screen images can be set from the Settings app or vi
 
     gsettings set org.gnome.desktop.background picture-uri 'file:///home/zarino/Pictures/Backgrounds/some-image-file.jpg'
     gsettings set org.gnome.desktop.screensaver picture-uri 'file:///home/zarino/Pictures/Backgrounds/some-image-file.jpg'
+
+## Gnome launcher icons
+
+When you choose to show a game “on the desktop” (ie: in the Gnome “Dash” launcher) in Steam on Linux, the resulting shortcut will only have the default Steam icon, not an icon specific to that particular game.
+
+To fix this, you can manually edit the `.desktop` files that Steam creates in `~/.local/share/applications/`, to include paths to the icon files in this repo’s `gnome-launcher-icons` directory. Eg:
+
+    [Desktop Entry]
+    Name=Parkitect
+    Comment=Play this game on Steam
+    Exec=steam steam://rungameid/453090
+    Icon=/home/zarino/pop-os-tweaks/gnome-launcher-icons/parkitect.png
+    Terminal=false
+    Type=Application
+    Categories=Game;
