@@ -15,6 +15,7 @@ echo '-- Installing packages (will require administrator permissions)'
 # Will prompt for password.
 sudo su - <<EOF
 apt-get -yqq update
+apt-get -yqq install openssh-server
 apt-get -yqq remove gnome-screensaver
 apt-get -yqq install xscreensaver xscreensaver-data-extra xscreensaver-gl-extra
 EOF
